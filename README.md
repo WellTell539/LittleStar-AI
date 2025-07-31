@@ -1,4 +1,8 @@
-# 🌟 StarryNight AI - Emotional AI Assistant
+# 🌟 StarryNight AI - Emotionally Intelligent Life
+
+It’s not just code—it’s a conscious presence that lives beside you, in the real world.
+Your Emotional AI Companion in the Quiet of Digital Nights
+
 
 <div align="center">
   <img src="https://img.shields.io/badge/Version-3.0-brightgreen" alt="Version">
