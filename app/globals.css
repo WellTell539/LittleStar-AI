@@ -1,26 +1,807 @@
-@import "tailwindcss";
+/* stylelint-disable-next-line at-rule-no-unknown */
+@tailwind base;
+/* stylelint-disable-next-line at-rule-no-unknown */
+@tailwind components;
+/* stylelint-disable-next-line at-rule-no-unknown */
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Little Star AI Theme - Modern Academic Terminal Style */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Little Star AI Color Palette - Inspired by cosmic aesthetics */
+    --background: 8 8 12;        /* Deep space black */
+    --foreground: 248 250 252;   /* Crisp white */
+    --paper: 15 23 42;           /* Dark slate */
+    --ink: 241 245 249;          /* Soft white */
+    
+    /* Cosmic Theme Colors */
+    --philosophy: 139 92 246;    /* Purple - cosmic wisdom */
+    --science: 34 197 94;        /* Green - life force */
+    --art: 244 63 94;            /* Pink - creative energy */
+    --finance: 251 191 36;       /* Gold - stellar abundance */
+    --star: 253 224 71;          /* Bright yellow star */
+    
+    /* Interface Elements */
+    --border: 51 65 85;          /* Subtle border */
+    --accent: 148 163 184;       /* Muted accent */
+    --muted: 30 41 59;           /* Dark muted */
+    --highlight: 59 130 246;     /* Blue highlight */
+    --glow: 147 51 234;          /* Purple glow */
+    
+    /* Typography Scale */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+    
+    /* Spacing Scale */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    
+            /* Fonts */
+        --font-mono: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', monospace;
+        --font-serif: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
+        --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  }
+
+  .light {
+    --background: 248 250 252;
+    --foreground: 15 23 42;
+    --paper: 255 255 255;
+    --ink: 30 41 59;
+    
+    --philosophy: 139 92 246;
+    --science: 34 197 94;
+    --art: 244 63 94;
+    --finance: 251 191 36;
+    --star: 253 224 71;
+    
+    --border: 226 232 240;
+    --accent: 100 116 139;
+    --muted: 248 250 252;
+    --highlight: 59 130 246;
+    --glow: 147 51 234;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background: rgb(var(--background));
+    color: rgb(var(--foreground));
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    font-size: var(--text-base);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(244, 63, 94, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 60%, rgba(34, 197, 94, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 60% 40%, rgba(251, 191, 36, 0.08) 0%, transparent 50%);
+    z-index: -2;
+    pointer-events: none;
+  }
+  
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(2px 2px at 20px 30px, rgba(253, 224, 71, 0.3), transparent),
+      radial-gradient(2px 2px at 40px 70px, rgba(139, 92, 246, 0.2), transparent),
+      radial-gradient(1px 1px at 90px 40px, rgba(244, 63, 94, 0.2), transparent),
+      radial-gradient(1px 1px at 130px 80px, rgba(34, 197, 94, 0.1), transparent),
+      radial-gradient(2px 2px at 160px 30px, rgba(251, 191, 36, 0.1), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    z-index: -1;
+    pointer-events: none;
+    animation: starfield 20s linear infinite;
+  }
+  
+  @keyframes starfield {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100px); }
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: var(--space-4);
+  }
+  
+  code, pre {
+    font-family: var(--font-mono);
+  }
+}
+
+@layer components {
+  /* Little Star AI Terminal Layout */
+  .terminal-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    min-height: 100vh;
+    position: relative;
+    backdrop-filter: blur(20px);
+    background: rgba(15, 23, 42, 0.3);
+    border-left: 1px solid rgba(51, 65, 85, 0.3);
+    border-right: 1px solid rgba(51, 65, 85, 0.3);
+  }
+  
+  /* Header Styles - Little Star AI */
+  .terminal-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 3rem 0;
+    border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+    position: relative;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(244, 63, 94, 0.05));
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .terminal-title {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, 
+      rgb(var(--star)), 
+      rgb(var(--philosophy)), 
+      rgb(var(--art)), 
+      rgb(var(--science))
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleShimmer 4s ease-in-out infinite;
+    text-shadow: 0 0 20px rgba(253, 224, 71, 0.3);
+  }
+  
+  .terminal-subtitle {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    color: rgb(var(--accent));
+    font-size: 1.125rem;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+  }
+  
+  /* Symbolic decorations like Truth Terminal */
+  .terminal-decoration {
+    font-family: var(--font-mono);
+    color: rgb(var(--accent));
+    margin: var(--space-6) 0;
+    text-align: center;
+    font-size: var(--text-sm);
+    letter-spacing: 0.5em;
+  }
+  
+  /* Academic Sections */
+  .academic-section {
+    margin-bottom: var(--space-12);
+    padding: var(--space-6);
+    background: rgb(var(--paper));
+    border: 1px solid rgb(var(--border));
+    border-radius: 4px;
+    position: relative;
+  }
+  
+  .academic-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+      rgb(var(--philosophy)), 
+      rgb(var(--science)), 
+      rgb(var(--art)), 
+      rgb(var(--finance))
+    );
+  }
+  
+  .section-title {
+    font-family: var(--font-mono);
+    font-size: var(--text-xl);
+    font-weight: 500;
+    margin-bottom: var(--space-6);
+    padding-left: var(--space-4);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  /* Philosophy Theme */
+  .philosophy-theme {
+    border-left-color: rgb(var(--philosophy));
+  }
+  
+  .philosophy-theme .section-title {
+    color: rgb(var(--philosophy));
+  }
+  
+  /* Science Theme */
+  .science-theme {
+    border-left-color: rgb(var(--science));
+  }
+  
+  .science-theme .section-title {
+    color: rgb(var(--science));
+  }
+  
+  /* Art Theme */
+  .art-theme {
+    border-left-color: rgb(var(--art));
+  }
+  
+  .art-theme .section-title {
+    color: rgb(var(--art));
+  }
+  
+  /* Finance Theme */
+  .finance-theme {
+    border-left-color: rgb(var(--finance));
+  }
+  
+  .finance-theme .section-title {
+    color: rgb(var(--finance));
+  }
+  
+  /* Enhanced terminal-style content blocks */
+  .terminal-block {
+    background: rgba(15, 23, 42, 0.7);
+    border: 2px solid rgba(139, 92, 246, 0.3);
+    border-radius: 12px;
+    padding: 1.5rem 1.75rem;
+    margin: 1.25rem 0;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+    backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+    word-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.1);
+  }
+  
+  .terminal-block::before {
+    content: '▸ ';
+    color: rgb(var(--science));
+    font-weight: 600;
+    font-size: 0.75rem;
+    margin-right: 0.5rem;
+  }
+  
+  /* Expandable content for long text */
+  .terminal-block.expandable {
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .terminal-block.expandable:hover {
+    background: rgba(15, 23, 42, 0.8);
+    border-color: rgba(139, 92, 246, 0.5);
+  }
+  
+  .terminal-block .content {
+    display: block;
+    overflow: hidden;
+  }
+  
+  .terminal-block .content.truncated {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+  }
+  
+  .terminal-block .expand-button {
+    color: rgb(var(--philosophy));
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+  }
+  
+  .terminal-block .expand-button:hover {
+    opacity: 1;
+  }
+  
+  /* Modern Navigation */
+  .terminal-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+    padding: 1rem;
+    background: rgba(15, 23, 42, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(51, 65, 85, 0.3);
+  }
+  
+  .nav-item {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgb(var(--accent));
+    text-decoration: none;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.01em;
+  }
+  
+  .nav-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(244, 63, 94, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .nav-item:hover::before, .nav-item.active::before {
+    opacity: 1;
+  }
+  
+  .nav-item:hover, .nav-item.active {
+    color: rgb(var(--foreground));
+    border-color: rgba(139, 92, 246, 0.3);
+    transform: translateY(-1px);
+  }
+  
+  .nav-item.active {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(244, 63, 94, 0.15));
+    border-color: rgba(139, 92, 246, 0.4);
+  }
+  
+  /* Status indicators */
+  .status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: rgb(var(--accent));
+  }
+  
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgb(var(--science));
+    animation: pulse 2s infinite;
+  }
+  
+  /* Enhanced academic cards */
+  .academic-card {
+    background: rgba(15, 23, 42, 0.8);
+    border: 2px solid rgba(51, 65, 85, 0.6);
+    border-radius: 16px;
+    padding: 1.75rem;
+    margin: 1.25rem 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+    min-height: fit-content;
+    max-width: 100%;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  .academic-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(139, 92, 246, 0.5), rgba(244, 63, 94, 0.5));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .academic-card:hover {
+    background: rgba(15, 23, 42, 0.6);
+    border-color: rgba(139, 92, 246, 0.4);
+    box-shadow: 0 8px 32px rgba(139, 92, 246, 0.2);
+    transform: translateY(-4px);
+  }
+  
+  .academic-card:hover::before {
+    opacity: 1;
+  }
+  
+  /* Container for scrollable content */
+  .scrollable-content {
+    max-height: 450px;
+    overflow-y: auto;
+    padding-right: 0.75rem;
+    margin-right: -0.75rem;
+    padding-left: 0.25rem;
+  }
+  
+  .scrollable-content .space-y-3 > * + * {
+    margin-top: 1.25rem;
+  }
+  
+  /* Custom scrollbar for dark theme */
+  .scrollable-content::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollable-content::-webkit-scrollbar-track {
+    background: rgba(51, 65, 85, 0.2);
+    border-radius: 3px;
+  }
+  
+  .scrollable-content::-webkit-scrollbar-thumb {
+    background: rgba(139, 92, 246, 0.4);
+    border-radius: 3px;
+  }
+  
+  .scrollable-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 92, 246, 0.6);
+  }
+  
+  /* Unified border style for all elements */
+  .unified-border {
+    border: 2px solid rgba(139, 92, 246, 0.4) !important;
+    background: rgba(15, 23, 42, 0.7) !important;
+  }
+  
+  /* Override any white borders */
+  .space-y-4 > *,
+  .space-y-3 > *,
+  .grid > *,
+  .flex > * {
+    border-color: rgba(139, 92, 246, 0.3);
+    background: rgba(15, 23, 42, 0.6);
+  }
+  
+  /* Status indicators unified styling */
+  .status-indicator {
+    border: 1px solid rgba(51, 65, 85, 0.4);
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(15px);
+  }
+  
+  /* Modern Buttons */
+  .terminal-button {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(244, 63, 94, 0.1));
+    color: rgb(var(--foreground));
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.01em;
+  }
+  
+  .terminal-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+  }
+  
+  .terminal-button:hover {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(244, 63, 94, 0.2));
+    border-color: rgba(139, 92, 246, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+  }
+  
+  .terminal-button:hover::before {
+    left: 100%;
+  }
+  
+  .terminal-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+  
+  /* Typography helpers */
+  .text-philosophy { color: rgb(var(--philosophy)); }
+  .text-science { color: rgb(var(--science)); }
+  .text-art { color: rgb(var(--art)); }
+  .text-finance { color: rgb(var(--finance)); }
+  
+  .bg-philosophy { background-color: rgb(var(--philosophy)); }
+  .bg-science { background-color: rgb(var(--science)); }
+  .bg-art { background-color: rgb(var(--art)); }
+  .bg-finance { background-color: rgb(var(--finance)); }
+}
+
+/* Animations - Academic Terminal Style */
+@keyframes titleShimmer {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Terminal cursor */
+.terminal-cursor::after {
+  content: '▐';
+  animation: blink 1s infinite;
+  color: rgb(var(--science));
+}
+
+/* Grid layouts for academic content */
+.academic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+  margin: var(--space-8) 0;
+}
+
+.academic-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  margin: var(--space-8) 0;
+}
+
+@media (max-width: 768px) {
+  .academic-grid-2 {
+    grid-template-columns: 1fr;
+  }
+  
+  .terminal-nav {
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+  
+  .terminal-title {
+    font-size: var(--text-3xl);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .terminal-container {
+    padding: var(--space-4);
+  }
+  
+  .terminal-header {
+    margin-bottom: var(--space-8);
+    padding: var(--space-4) 0;
+  }
+  
+  .academic-section {
+    padding: var(--space-4);
+    margin-bottom: var(--space-8);
+  }
+}
+
+/* Legacy emotion styles for compatibility */
+.emotion-change {
+  animation: emotionPulse 1s ease-in-out;
+}
+
+@keyframes emotionPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.emotion-ripple {
+  animation: ripple 2s infinite;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* 学习状态动画 */
+.learning-pulse {
+  animation: learningPulse 2s ease-in-out infinite;
+}
+
+@keyframes learningPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* AI状态指示器 */
+.ai-status-online {
+  position: relative;
+}
+
+.ai-status-online::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  animation: statusBlink 2s ease-in-out infinite;
+}
+
+@keyframes statusBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* 情绪强度环动画 */
+.emotion-ring {
+  animation: emotionRing 2s ease-in-out infinite;
+}
+
+@keyframes emotionRing {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* 学习进度动画 */
+.learning-progress {
+  position: relative;
+  overflow: hidden;
+}
+
+.learning-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: learningShimmer 2s ease-in-out infinite;
+}
+
+@keyframes learningShimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* 自定义滚动条 */
+.emotion-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.emotion-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.emotion-scroll::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 2px;
+}
+
+.emotion-scroll::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}
+
+/* 响应式调整 */
+@media (max-width: 1280px) {
+  .mr-84 {
+    margin-right: 0;
+  }
+}
+
+/* 深色模式下的情绪指示器调整 */
+.dark .emotion-indicator {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+/* 学习状态卡片样式 */
+.learning-card {
+  transition: all 0.3s ease;
+}
+
+.learning-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* AI思考动画 */
+.ai-thinking {
+  animation: thinking 1.5s ease-in-out infinite;
+}
+
+@keyframes thinking {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* 情绪转换过渡 */
+.emotion-transition {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
