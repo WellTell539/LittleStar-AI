@@ -105,7 +105,7 @@ export default function Dashboard() {
         </div>
         <div className="status-indicator">
           <div className="status-dot"></div>
-          <span>online • {mounted ? currentTime.toLocaleTimeString() : '--:--:--'}</span>
+          <span>online • {mounted && currentTime ? currentTime.toLocaleTimeString() : '--:--:--'}</span>
         </div>
       </header>
 
